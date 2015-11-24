@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigInteger;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -89,7 +90,7 @@ public class LitleBatchRequest {
 			tmpFile.mkdir();
 		}
 		java.util.Date date= new java.util.Date();
-		filePath = new String(lbfr.getConfig().getProperty("batchRequestFolder")+ "/tmp/Transactions" +merchantId + new Timestamp(date.getTime()));
+		filePath = new String(lbfr.getConfig().getProperty("batchRequestFolder")+ "/tmp/Transactions" +merchantId + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(date));
 		numOfTxn = 0;
 		try {
 			this.jc = JAXBContext.newInstance("com.litle.sdk.generate");
